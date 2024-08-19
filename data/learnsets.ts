@@ -32,8 +32,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	bulbasaur: {
 		learnset: {
 			acidspray: ["9M"],
-			amnesia: ["8M", "7E", "6E", "5E", "4E"],
-			attract: ["8M", "7M", "7V", "6M", "5M", "4M", "3M"],
+			amnesia: ["9M",],
+			attract: ["9M"],
 			bide: ["7V"],
 			bind: ["7T", "6T", "5T"],
 			block: ["5S3"],
