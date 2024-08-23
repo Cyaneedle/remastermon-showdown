@@ -14619,6 +14619,26 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Psychic",
 		contestType: "Clever",
 	},
+	piercingscreech: {
+		num: 706,
+		accuracy: 100,
+		basePower: 85,
+		category: "Special",
+		name: "Piercing Screech",
+		pp: 10,
+		priority: 0,
+		flags: {sound: 1, protect: 1, mirror: 1, metronome: 1, bypasssub: 1,},
+		onTryHit(pokemon) {
+			// will shatter screens through sub, before you hit
+			pokemon.side.removeSideCondition('reflect');
+			pokemon.side.removeSideCondition('lightscreen');
+			pokemon.side.removeSideCondition('auroraveil');
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		contestType: "Clever",
+	},
 	psychicnoise: {
 		num: 917,
 		accuracy: 100,
@@ -14756,7 +14776,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	},
 	psyshieldbash: {
 		num: 828,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 70,
 		category: "Physical",
 		name: "Psyshield Bash",
@@ -14787,6 +14807,21 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		secondary: null,
 		target: "normal",
 		type: "Psychic",
+		contestType: "Beautiful",
+},
+	manifist: {
+		num: 473,
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		overrideDefensiveStat: 'def',
+		name: "Manifist",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, metronome: 1, punch: 1},
+		secondary: null,
+		target: "normal",
+		type: "Fighting",
 		contestType: "Beautiful",
 	},
 	psystrike: {
@@ -14898,7 +14933,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			return move.basePower;
 		},
 		category: "Physical",
-		isNonstandard: "Past",
 		name: "Pursuit",
 		pp: 20,
 		priority: 0,
@@ -15564,7 +15598,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			return Math.floor((pokemon.happiness * 10) / 25) || 1;
 		},
 		category: "Physical",
-		isNonstandard: "Past",
 		name: "Return",
 		pp: 20,
 		priority: 0,
@@ -15740,7 +15773,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	},
 	rockblast: {
 		num: 350,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 25,
 		category: "Physical",
 		name: "Rock Blast",
@@ -15770,7 +15803,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			volatileStatus: 'confusion',
 		},
 		target: "normal",
-		type: "Normal",
+		type: "Rock",
 		contestType: "Tough",
 	},
 	rockpolish: {
@@ -16302,10 +16335,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	},
 	sappyseed: {
 		num: 738,
-		accuracy: 90,
-		basePower: 100,
+		accuracy: 100,
+		basePower: 85,
 		category: "Physical",
-		isNonstandard: "LGPE",
 		name: "Sappy Seed",
 		pp: 10,
 		priority: 0,
@@ -17667,7 +17699,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	smartstrike: {
 		num: 684,
 		accuracy: true,
-		basePower: 70,
+		basePower: 80,
 		category: "Physical",
 		name: "Smart Strike",
 		pp: 10,
@@ -18065,7 +18097,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 85,
 		basePower: 120,
 		category: "Special",
-		isNonstandard: "LGPE",
 		name: "Sparkly Swirl",
 		pp: 5,
 		priority: 0,
@@ -18163,7 +18194,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	spikecannon: {
 		num: 131,
 		accuracy: 100,
-		basePower: 20,
+		basePower: 25,
 		category: "Physical",
 		isNonstandard: "Past",
 		name: "Spike Cannon",
@@ -18173,7 +18204,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		multihit: [2, 5],
 		secondary: null,
 		target: "normal",
-		type: "Normal",
+		type: "Ground",
 		maxMove: {basePower: 120},
 		contestType: "Cool",
 	},
@@ -22051,21 +22082,328 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
-		isNonstandard: "LGPE",
 		name: "Zippy Zap",
 		pp: 10,
 		priority: 2,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: {
-			chance: 100,
+			chance: 10,
 			self: {
 				boosts: {
-					evasion: 1,
+					attack: 1,
 				},
 			},
 		},
 		target: "normal",
 		type: "Electric",
 		contestType: "Cool",
+	
+ },
+	mop: {
+		num: 69033,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Mop",
+		pp: 10,
+		priority: 0,
+		target: "self",
+		type: "Fairy",
+		flags: {},
+		onHit(pokemon, source) }
+			const sideConditions = [
+				'spikes',
+				'toxicspikes',
+				'stealthrock',
+				'stickyweb',
+				'sleazyspores',
+				'gmaxsteelsurge',
+				'shattershard',
+				'luckyroll',
+				'magictrap',
+				'pillowpile',
+				'wiretrap',
+				'mines',
+				'brambles',
+				'icicles',
+				'scrapmetal',
+				'legotrap',
+				'hotcoals',
+				'acidtrap',
+				'discombubbles',
+			];
+			const removedConditions = [];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.conditions.get(condition).name, '[from] move: Mop', '[of] ' + pokemon);
+					removedConditions.push(condition);
+				}
+			}
+			if (removedConditions.length > 0) {
+				this.boost({accuracy: 1});
+				source.speciesState.mopped = true;
+			}
+		},
+		isNonstandard: "Future", 
+},
+	punchout: {
+		num: 69004,
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		name: "Punch Out",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, punch: 1, mirror: 1},
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Fighting",
+		zMove: {basePower: 140},
+		isNonstandard: "Future",
+},
+	slipturn: {
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		name: "Slip Turn",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Ice",
+		contestType: "Cute",
+		isNonstandard: "Future",
 	},
+	petrify: {
+		isNonstandard: "Future",
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Petrify",
+		pp: 10,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		volatileStatus: 'protect',
+		onPrepareHit(pokemon) {
+			return !!this.queue.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onHit(pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		boosts: {
+			def: 1,
+		},
+		secondary: null,
+		target: "self",
+		type: "Rock",
+},
+	scrapcannon: {
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		name: "Scrap Cannon",
+		pp: 10,
+		priority: 0,
+		flags: {bullet: 1, protect: 1, mirror: 1},
+		secondary: null,
+		self: {
+			onHit(source) {
+				for (const side of source.side.foeSidesWithConditions()) {
+					side.addSideCondition('gmaxsteelsurge');
+				}
+			},
+		},
+		condition: {
+			onSideStart(side) {
+				this.add('-sidestart', side, 'move: G-Max Steelsurge');
+			},
+			onEntryHazard(pokemon) {
+				if (pokemon.hasItem('heavydutyboots')) return;
+				// Ice Face and Disguise correctly get typed damage from Stealth Rock
+				// because Stealth Rock bypasses Substitute.
+				// They don't get typed damage from Steelsurge because Steelsurge doesn't,
+				// so we're going to test the damage of a Steel-type Stealth Rock instead.
+				const steelHazard = this.dex.getActiveMove('Stealth Rock');
+				steelHazard.type = 'Steel';
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(steelHazard), -6, 6);
+				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		target: "normal",
+		type: "Steel",
+		isNonstandard: "Future",
+	
+},
+	fractus: {
+		accuracy: 100,
+		basePower: 75,
+		category: "Physical",
+		name: "Fractus",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTryHit(pokemon) {
+			// will shatter screens through sub, before you hit
+			pokemon.side.removeSideCondition('reflect');
+			pokemon.side.removeSideCondition('lightscreen');
+			pokemon.side.removeSideCondition('auroraveil');
+			pokemon.side.removeSideCondition('mirageveil');
+		},
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		isNonstandard: "Future",
+},
+	calibrate: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Calibrate",
+		pp: 15,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			spa: 1,
+			accuracy: 1,
+		},
+		secondary: null,
+		target: "self",
+		type: "Steel",
+		zMove: {boost: {spa: 1}},
+		isNonstandard: "Future",
+},
+	toxicbeam: {
+		accuracy: 90,
+		basePower: 110,
+		category: "Special",
+		name: "Toxic Beam",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 20,
+			status: 'tox',
+		},
+		target: "normal",
+		noSketch: true,
+		type: "Poison",
+		contestType: "Clever",
+		isNonstandard: "Future",
+},
+	flashbang: {
+		num: 366,
+		accuracy: true,
+		basePower: 70,
+		category: "Special",
+		name: "Flashbang",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		self: {
+			sideCondition: 'flashbang',
+		},
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+		isNonstandard: "Future",
+	isNonstandard: "Future",
+	
+},
+	nosedive: {
+		num: 354,
+		accuracy: 95,
+		basePower: 120,
+		category: "Physical",
+		isNonstandard: "Future",
+		name: "Nosedive",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		self: {
+			boosts: {
+				def: -2,
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		contestType: "Clever",
+},
+	brutalmauling: {
+		accuracy: 100,
+		basePower: 30,
+		category: "Physical",
+		name: "Brutal Mauling",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: [2, 5],
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		isNonstandard: "Future",
+},
+	riptide: {
+		num: 463,
+		accuracy: 80,
+		basePower: 100,
+		category: "Special",
+		name: "Riptide",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		volatileStatus: 'partiallytrapped',
+		secondary: null,
+		target: "normal",
+		isNonstandard: "Future",
+		type: "Water",
+		contestType: "Tough",
+
+},
+	aquafangs: {
+		num: 242,
+		accuracy: 100,
+		basePower: 85,
+		category: "Physical",
+		name: "Aqua Fangs",
+		pp: 15,
+		priority: 0,
+		flags: {bite: 1, contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 20,
+			boosts: {
+				spe: -1,
+			},
+		},
+		target: "normal",
+		type: "Water",
+		contestType: "Tough",
+		isNonstandard: "Future",
+
+},
+	scorchedearth: {
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Scorched Earth",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onEffectiveness(typeMod, target, type, move) {
+			return Math.max(
+				this.dex.getEffectiveness('Ground', type),
+				this.dex.getEffectiveness('Fire', type),
+		     },
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		contestType: "Cool",
+		isNonstandard: "Future",
+			},
+		
 };
