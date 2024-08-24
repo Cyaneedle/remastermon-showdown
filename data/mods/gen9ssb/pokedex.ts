@@ -1195,4 +1195,10 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 		inherit: true,
 		abilities: {0: "Nine Lives"},
 	},
+// snickerdoodle
+dachsbun: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 80, def: 120, spa: 45, spd: 85, spe: 95},
+		abilities: {0: "Elitist Cook"},
+	},
 };
