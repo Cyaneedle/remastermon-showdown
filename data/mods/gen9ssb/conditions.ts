@@ -3358,5 +3358,29 @@ export const Conditions: {[id: IDEntry]: ModdedConditionData & {innateName?: str
 			}
 			return false;
 		},
+// super staff bros.. flash? huh?
 	},
+	snickerdoodle: {
+		noCopy: true,
+		onStart() {
+			this.add(`c:|${getName('Snickerdoodle')}|Hey dudes! Bread dog in da house!`);
+		},
+		onSwitchOut() {
+			this.add(`c:|${getName('Aethernum')}|Really? only when it was JUST getting fun?`);
+		},
+		onFaint() {
+			this.add(`c:|${getName('Aethernum')}|Oh.. welp! can't win all your battles!`);
+		},
+	},
+	cyaneedle: {
+		noCopy: true,
+		onStart() {
+			this.add(`c:|${getName('Cyaneedle')}|SUP!!!!!`);
+		},
+		onSwitchOut() {
+			this.add(`c:|${getName('Cyaneedle')}|cya :3`);
+		},
+		onFaint() {
+			this.add(`c:|${getName('Cyaneedle')}|wow, fuck this game.`);
+		},
 };
