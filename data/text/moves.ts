@@ -7545,5 +7545,32 @@ export const MovesText: {[id: IDEntry]: MoveText} = {
 			desc: "Will always result in a critical hit.",
 			shortDesc: "Nearly always goes first. Always crits.",
 		},
+	  rocketrush: {
+		name: "Rocket Rush",
+		desc: "No additional effects.",
+		shortDesc: "Usually goes first.",
 	},
+roselance: {
+		name: "Rose Lance",
+		desc: "Deals damage to the target based on its Special Defense instead of Defense. 10% Chance to lower Special Defense",
+		shortDesc: "Damages target based on Sp. Def, not Def. 10% chance to lower Sp. Def",
+	},
+	shatter: {
+		name: "Shatter",
+		desc: "If this attack does not miss, the effects of Reflect, Light Screen, and Aurora Veil end for the target's side of the field before damage is calculated.",
+		shortDesc: "Destroys screens, unless the target is immune.",
+		},
+
+		activate: "  [POKEMON] shattered [TEAM]'s protections!",
+},
+	echoflare: {
+		name: "Echo Flagre",
+		desc: "Has a 20% chance to burn the target. Hits all opposing Pokemon.",
+		shortDesc: "20% chance to burn. Hits all opposing pokemon.",
+},
+	crystalburst: {
+		name: "Crystal Burst",
+		desc: "Lowers the user's Defense by 1 stage.",
+		shortDesc: "Lowers user's Def by 1.",
+		
 };
